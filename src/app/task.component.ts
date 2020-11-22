@@ -26,7 +26,7 @@ export class TaskComponent {
   editButton = true;
   createButton = false;
 
-  baseURL = 'https://tm-backend.herokuapp.com/';
+  baseURL = 'https://tm-backend.herokuapp.com';
 
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router ){}
 
