@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row mt-1" style="height:80px;"> 
+        <div class="col-md-1"></div>
+        <div class="col-12 col-md-10 bg-success d-flex justify-content-center align-items-center text-light h3"> 
+            <input [(ngModel)]="firstName" type="text" placeholder="Enter Firstname" class="col-md-4 form-control"> &nbsp;
+            <input [(ngModel)]="lastName" type="text" placeholder="Enter Lastname" class="col-md-4 form-control"> &nbsp;
+            <!-- <span>{{ firstName }} {{ lastName }}</span> -->
+            <button (click)="createUser()" [hidden]="createButton" class="btn btn-light text-success">Create User</button> 
+            <button (click)="updateUserDetails()" [hidden]="editButton" class="btn btn-light text-success">Update User</button>
+        </div>
+    </div> 
+    
+    
+    <div *ngIf="isUsers; else elseBlock1">
+      <div *ngFor="let user of users;" class="row mt-1" style="height:100px;"> 
+    
+        <div class="col-3 d-none col-md-1 d-md-block"></div> 
+    
+        <div class="col-12 col-md-10 bg-white d-flex justify-content-center align-items-center text-light h3"> 
+            <div class="col-9 text-dark h3">{{ user.firstName }} {{ user.lastName }}</div>
+            <a [routerLink]="['../tasks', user._id]" type="button" class="btn btn-primary">My Tasks</a>
+            <input (click)="editUser(user._id)" type="button" value="Edit" class="btn btn-info">
+            <input (click)="deleteUser(user._id)" type="button" value="Delete" class="btn btn-danger">
+        </div> 
+          
+        <div class="col-3 d-none col-md-1 d-md-block"></div> 
+      </div> 
+    </div>
+    
+    <ng-template #elseBlock1>
+      <div class="row mt-1"> 
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <p class="text-center">No user registered</p>
+        </div>
+      </div>
+    </ng-template>
+</div>
