@@ -1,0 +1,68 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="container-fluid"> 
+  <div class="row mt-1" style="height:80px;"> 
+      <div class="col-md-1"></div>
+      <div class="col-12 col-md-10 bg-success d-flex justify-content-center align-items-center text-light h3"> 
+          <input [(ngModel)]="task" type="text" placeholder="Enter Task" class="col-md-4 form-control"> &nbsp;
+          <!-- <span>{{ firstName }} {{ lastName }}</span> -->
+          <button (click)="createTask()" [hidden]="createButton" class="btn btn-light text-success">Create Task</button>
+          <button (click)="updateTaskDetails()" [hidden]="editButton" class="btn btn-light text-success">Update Task</button>
+      </div>
+  </div> 
+  
+    <!--Users List -->
+    <div *ngIf="tasks; else elseBlock1">
+      <div *ngFor="let task of tasks;" class="row mt-1" style="height:100px;"> 
+  
+        <div class="col-3 d-none col-md-1 d-md-block"></div> 
+  
+        <div class="col-12 col-md-10 bg-white d-flex justify-content-center align-items-center text-light h3"> 
+            <div class="col-9 text-dark h3">{{ task.task }}</div>
+            <div [ngSwitch]="task.state">
+              <div *ngSwitchCase="'to do'" >
+                <input (click)="updateTask(task._id, 'done')" type="button" value="End Task" class="btn btn-danger">
+                <input (click)="editTask(task._id)" type="button" value="Edit Task" class="btn btn-info">
+                <input (click)="deleteTask(task._id)" type="button" value="Delete" class="btn btn-danger">
+              </div>
+              <div *ngSwitchCase="'done'">
+                <div class="bg-success text-center">Done</div>
+                <!-- <input (click)="updateTask(task._id, 'to do')" type="button" value="Done" class="btn btn-success"> -->
+                <input (click)="deleteTask(task._id)" type="button" value="Delete" class="btn btn-danger">
+              </div>
+              <div *ngSwitchDefault>
+                <input (click)="updateTask(task._id, 'done')" type="button" value="End Task" class="btn btn-danger">
+                <input (click)="editTask(task._id)" type="button" value="Edit Task" class="btn btn-info">
+                <input (click)="deleteTask(task._id)" type="button" value="Delete" class="btn btn-danger">
+              </div>
+            </div>
+        </div> 
+          
+        <div class="col-3 d-none col-md-1 d-md-block"></div> 
+      </div> 
+    </div>
+  
+    <ng-template #elseBlock1>
+      <div class="row mt-1"> 
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <p class="text-center">No tasks for user</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+  <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
