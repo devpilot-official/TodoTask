@@ -22,7 +22,7 @@ export class UserComponent {
   createButton = false;
   isUsers = false;
 
-  baseURL = 'https://tm-backend.herokuapp.com/';
+  baseURL = 'https://tm-backend.herokuapp.com';
 
   constructor(private http: HttpClient){}
 
