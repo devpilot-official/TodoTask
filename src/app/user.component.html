@@ -18,8 +18,8 @@
     
         <div class="col-12 col-md-10 bg-white d-flex justify-content-center align-items-center text-light h3"> 
             <div class="col-9 text-dark h3">{{ user.firstName }} {{ user.lastName }}</div>
-            <a [routerLink]="['../tasks', user._id]" type="button" class="btn btn-primary">My Tasks</a>
-            <input (click)="editUser(user._id)" type="button" value="Edit" class="btn btn-info">
+            <a [routerLink]="['../tasks', user._id]" type="button" class="btn btn-primary">My Tasks</a>&nbsp;
+            <input (click)="editUser(user._id)" type="button" value="Edit" class="btn btn-info">&nbsp;
             <input (click)="deleteUser(user._id)" type="button" value="Delete" class="btn btn-danger">
         </div> 
           
